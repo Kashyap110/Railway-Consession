@@ -35,16 +35,27 @@ $(".next-2").click(function(){
   current += 1;
 });
 
-$(".submit").click(function(){
+$(".submit1").click(function(){
   bullet[current - 1].classList.add("active");
   progressCheck[current - 1].classList.add("active");
   progressText[current - 1].classList.add("active");
   current += 1;
   setTimeout(function(){
-    alert("New User Registered Successfully 👍 ");
-    location.reload();
+    alert("Personal Details successfully filled.");
+    location.href = "institute_form.html";
   },1000);
 });
+
+$(".submit").click(function(){
+    bullet[current - 1].classList.add("active");
+    progressCheck[current - 1].classList.add("active");
+    progressText[current - 1].classList.add("active");
+    current += 1;
+    setTimeout(function(){
+      alert("Registration completed successfully.");
+      location.reload();
+    },1000);
+  });
 
 $(".prev-1").click(function(){
   slidePage.style.marginLeft = "0%";
