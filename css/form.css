@@ -84,6 +84,14 @@ form .page .field input{
   padding-left: 15px;
   font-size: 15px;
 }
+form .page .field .addressbox input{
+	height: 80%;
+	width: 100%;
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+	padding-left: 15px;
+	font-size: 15px;
+  }
 form .page .field input:focus, form .page .field select:focus
 {
   border: 2px solid rgb(24, 8, 113);
