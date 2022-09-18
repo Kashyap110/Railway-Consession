@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   outline: none;
-  font-family: 'Monteserrat';
+  font-family: 'Montserrat';
 }
 body{
   display: flex;
@@ -12,8 +12,10 @@ body{
   justify-content: center;
   min-height: 100vh;
   overflow: visible;
-  background: rgb(2,37,27);
-  background: linear-gradient(90deg, rgba(2,37,27,1) 0%, rgba(9,121,93,1) 40%, rgba(20,185,144,1) 74%, rgba(0,255,204,1) 100%);
+  background: url("https://media.istockphoto.com/photos/chhatrapati-shivaji-terminus-in-mumbai-india-picture-id1334792855?k=20&m=1334792855&s=612x612&w=0&h=sZeTeAkggGVROi9mipNZkd1x7F2DUacfmECMtptB9ZM=") no-repeat;
+  background-size: cover;
+  font-family: montserrat, arial, verdana;
+
 }
 ::selection{
   color: black;
@@ -32,9 +34,9 @@ body{
 .container header{
   font-size: 35px;
   font-weight: 600;
-  font-family: 'Monteserrat';
+  text-transform: uppercase;
   letter-spacing: 2px;
-  color: maroon;
+  color: rgb(0, 0, 0);
   margin: 0 0 10px 0;
 }
 .container .form-outer{
@@ -52,10 +54,10 @@ body{
 }
 .form-outer form .page .title{
   text-align: left;
-  font-size: 25px;
-  font-family: 'Monteserrat';
+  font-size: 20px;
+  text-transform: uppercase;
   letter-spacing: 2px;
-  color: darkred;
+  color: rgb(24, 8, 113);
   font-weight: bold;
 }
 .form-outer form .page .field{
@@ -70,7 +72,9 @@ form .page .field .label{
   top: -30px;
   font-family: 'Cairo', sans-serif;
   letter-spacing: 2px;
-  font-weight: 500;
+  font-weight: 200;
+  text-transform: uppercase;
+  font-size: 13px;
 }
 form .page .field input{
   height: 80%;
@@ -95,7 +99,7 @@ form .page .field button{
   width: 100%;
   height: calc(100% + 5px);
   border: none;
-  background: #196b61;
+  background: #00b3ff;
   margin-top: -20px;
   border-radius: 10px;
   color: #fff;
@@ -107,7 +111,7 @@ form .page .field button{
   transition: 1s ease;
 }
 form .page .field button:hover{
-  background: #0a302c;
+  background: rgb(24, 8, 113);
 }
 form .page .btns button{
   margin-top: -15px!important;
@@ -152,7 +156,7 @@ form .page .btns button.next{
 }
 .progress-bar .step .bullet.active{
   border-color: green;
-  background: green;
+  background: rgb(67, 186, 67);
 }
 .progress-bar .step .bullet span{
   position: absolute;
