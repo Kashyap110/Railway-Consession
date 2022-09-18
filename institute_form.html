@@ -90,18 +90,25 @@
                      <i style="font-size: 18px;" class="fa fa-train"></i> Railway Details 
                   </div>
                   <div class="field">
-                     
-                     <input type="text" name="dob" placeholder="Choose your DOB" onfocus="(this.type='date')">
+                    <input type="text" name="station" placeholder="FROM STATION">
                   </div>
                   <div class="field">
-                     
-                     <input type="text" name="profession" placeholder="DOB">
+                    <input type="text" name="station" placeholder="TO STATION">
                   </div>
                   <div class="field">
-                     <div class="label">
-                        Qualification
-                     </div>
-                     <input type="text">
+                    <select>
+                        <option>Select Class</option>
+                        <option>AC local</option>
+                        <option>First Class</option>
+                        <option>Second Class</option>
+                     </select>
+                  </div>
+                  <div class="field">
+                    <select>
+                        <option>Select Duration</option>
+                        <option>Monthly</option>
+                        <option>Quarterly</option>
+                     </select>
                   </div>
                   <div class="field btns">
                      <button class="prev-2 prev">Previous</button>
@@ -110,30 +117,21 @@
                </div>
                <div class="page">
                   <div class="title">
-                     <i style="font-size: 18px;" class="fa fa-user"></i> Account Setup 
+                     <i style="font-size: 18px;" class="fa fa-train"></i> Previous Pass Details
                   </div>
                   <div class="field">
-                     <div class="label">
-                        Username
-                     </div>
-                     <input type="text">
+                    <input type="text" name="pass number" placeholder="PREVIOUS PASS NUMBER">
                   </div>
                   <div class="field">
-                     <div class="label">
-                        Gender
-                     </div>
-                     <select>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                     </select>
+                    <input type="text" name="station" placeholder="PREVIOUS FROM STATION">
                   </div>
-                   <div class="field">
-                     <div class="label">
-                        Password
-                     </div>
-                     <input type="password">
+                  <div class="field">
+                    <input type="text" name="station" placeholder="PREVIOUS TO STATION">
                   </div>
+                  <div class="field">
+                     
+                    <input type="text" name="expiry date" placeholder="PASS EXPIRY DATE" onfocus="(this.type='date')">
+                 </div>
                   <div class="field btns">
                      <button class="prev-3 prev">Previous</button>
                      <button class="submit">Submit</button>
