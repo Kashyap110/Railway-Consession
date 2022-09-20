@@ -12,7 +12,7 @@ body{
   justify-content: center;
   min-height: 100vh;
   overflow: visible;
-  background: url("https://media.istockphoto.com/photos/chhatrapati-shivaji-terminus-in-mumbai-india-picture-id1334792855?k=20&m=1334792855&s=612x612&w=0&h=sZeTeAkggGVROi9mipNZkd1x7F2DUacfmECMtptB9ZM=") no-repeat;
+  background: url("https://media.istockphoto.com/photos/passenger-on-platforms-at-the-railway-station-of-jaipur-picture-id538562985?k=20&m=538562985&s=612x612&w=0&h=_7dX8rRgbkpJ0-4KIGw7kR7U0wbRqT2fGClS-2bU5BQ=") no-repeat;
   background-size: cover;
   font-family: montserrat, arial, verdana;
 
@@ -27,8 +27,8 @@ body{
   margin-bottom: 1.5%;
   background: #fff;
   text-align: center;
-  border-radius: 10px;
-  box-shadow: 4px 4px 25px 4px #022522;
+  border-radius: 6px;
+  box-shadow: 4px 4px 25px 4px #000000;
   padding: 20px 45px 0px 45px;
 }
 .container header{
@@ -107,7 +107,7 @@ form .page .field button{
   width: 100%;
   height: calc(100% + 5px);
   border: none;
-  background: #1c88fc;
+  background: #005dc0;
   margin-top: -10px;
   border-radius: 10px;
   color: #fff;

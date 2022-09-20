@@ -47,7 +47,7 @@
                      <i style="font-size: 18px;" class="fa fa-edit"></i> Personal Details
                   </div>
                   <div class="field">
-                     <input type="text" name="first name" placeholder="FIRST NAME" />
+                     <input type="text" class="required" name="first name" placeholder="FIRST NAME *" required />
                   </div>
                   <div class="field">
                      
@@ -55,7 +55,7 @@
                   </div>
                   <div class="field">
                      
-                     <input type="text" name="last name" placeholder="LAST NAME">
+                     <input type="text" class="required" name="last name" placeholder="LAST NAME *" required>
                   </div>
                   
                   <div class="field">
@@ -68,20 +68,20 @@
                   </div>
                   <div class="field">
                      
-                     <input type="text" name="father's name" placeholder="FATHER'S NAME">
+                     <input type="text" class="required" name="father's name" placeholder="FATHER'S NAME *" required>
                   </div>
                   <div class="field">
                      
-                     <input type="text" name="mother's name" placeholder="MOTHER'S NAME">
+                     <input type="text" class="required" name="mother's name" placeholder="MOTHER'S NAME *" required>
                   </div>
                   <div class="field">
                      
-                     <input type="text" name="dob" placeholder="CHOOSE YOUR DOB" onfocus="(this.type='date')">
+                     <input type="text" class="required" name="dob" placeholder="CHOOSE YOUR DOB *" onfocus="(this.type='date')" required>
                   </div>
                   <div class="field">
                      
-                     <select>
-                        <option>Select Gender</option>
+                     <select class="required" required >
+                        <option>Select Gender *</option>
                         <option>Male</option>
                         <option>Female</option>
                         <option>Others</option>
@@ -99,16 +99,13 @@
                   
                   
                   
-                  <div class="field">
-                     
-                     <input type="text" name="email address" placeholder="EMAIL ADDRESS">
+                  <div class="field">   
+                     <input type="text" class="required" name="email address" placeholder="EMAIL ADDRESS *" required>
                   </div>
                   <div class="field">
-                     
-                     <input type="text" name="phone number" placeholder="PHONE NUMBER">
+                     <input type="text" class="required" name="phone number" placeholder="PHONE NUMBER *" required>
                   </div>
                   <div class="field">
-                     
                      <input type="text" name="residential" placeholder="ALTERNATE PHONE NUMBER">
                   </div>
                   <div class="field btns">
@@ -121,14 +118,13 @@
                      <i style="font-size: 18px;" class="fa fa-address-book "></i> Address Details 
                   </div>
                   <div class="field" class="addressbox">
-                     
-                     <input type="text" name="address" placeholder="CURRENT ADDRESS">
+                     <input type="text" class="required" name="address" placeholder="CURRENT ADDRESS *" required>
                   </div>
                   <div class="field">
-                     <input type="text" name="city" placeholder="CITY">
+                     <input type="text" class="required" name="city" placeholder="CITY *" required>
                   </div>
                   <div class="field">
-                     <input type="text" name="pincode" placeholder="PINCODE">
+                     <input type="text" class="required" name="pincode" placeholder="PINCODE *" required>
                   </div>
                   <div class="field btns">
                      <button class="prev-3 prev">Previous</button>
@@ -138,6 +134,8 @@
             </form>
          </div>
       </div>
+      <script src="js/test.js"></script>
       <script src="js/form.js"></script>
+      
    </body>
 </html>

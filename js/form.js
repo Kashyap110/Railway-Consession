@@ -1,10 +1,10 @@
 const slidePage = document.querySelector(".slide-page");
-const nextBtnFirst = document.querySelector(".firstNext");
-const prevBtnSec = document.querySelector(".prev-1");
-const nextBtnSec = document.querySelector(".next-1");
-const prevBtnThird = document.querySelector(".prev-2");
-const nextBtnThird = document.querySelector(".next-2");
-const prevBtnFourth = document.querySelector(".prev-3");
+const nextBtnFirst = document.querySelectorAll(".firstNext");
+const prevBtnSec = document.querySelectorAll(".prev-1");
+const nextBtnSec = document.querySelectorAll(".next-1");
+const prevBtnThird = document.querySelectorAll(".prev-2");
+const nextBtnThird = document.querySelectorAll(".next-2");
+const prevBtnFourth = document.querySelectorAll(".prev-3");
 const submitBtn = document.querySelector(".submit");
 const progressText = document.querySelectorAll(".step p");
 const progressCheck = document.querySelectorAll(".step .check");
