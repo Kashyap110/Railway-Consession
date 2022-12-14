@@ -13,6 +13,14 @@ body{
   padding: 10px;
   background: #1A1E25;
 }
+
+a{
+  color: #1A1E25;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+}
+
 .container{
   max-width: 700px;
   width: 100%;

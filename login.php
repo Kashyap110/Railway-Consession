@@ -54,7 +54,7 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 <ul class="nav-area">
 <li><a href="index.html">Home</a></li>
 <li><a href="about.html">About</a></li>
-<li><a href="#">Sign In</a></li>
+<li><a href="login.php">Sign In</a></li>
 <li><a href="https://vjti.ac.in/"; target="_blank">VJTI Site</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
@@ -62,10 +62,10 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 </header>
  <div class="loginBox">
   <h2>Log In </h2>
-  <form id="login" action="login.php" onsubmit="return validate()" method="post" name="login">
+  <form id="login" action="dashboard.html" onsubmit="return validate()" method="post" name="login">
     <input type="text" name="regid" placeholder="Enter Registration ID" required>
     <input type="password" name="password" placeholder="Enter Password">
-    <input type="submit" style="color:black;" name="sign-in" value="Sign In">
+    <input type="submit" style="color:black;" name="sign-in" value="Sign In" >
     <a href="register.php">Don't have an account? Sign Up</a>
   </form>
 </div>

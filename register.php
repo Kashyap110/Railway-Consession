@@ -31,11 +31,9 @@ else
 ?>
 
 <!DOCTYPE html>
-<!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <!---<title> Responsive Registration Form | CodingLab </title>--->
     <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/validate.js"></script>
@@ -66,11 +64,11 @@ else
         
           <div class="input-box">
             <span class="details">New Password</span>
-            <input type="text" name="pw" placeholder="Enter your password" required>
+            <input type="password" name="pw" placeholder="Enter your password" required>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
-            <input type="text" placeholder="Confirm your password" required>
+            <input type="password" placeholder="Confirm your password" required>
           </div>
         
         <div class="gender-details">
@@ -97,7 +95,8 @@ else
         <div class="button">
           <input type="submit" name="submit" value="Register" style="color: black;">
         </div>
-      </form>
+      </form> 
+      <a href="login.php">Already have an account? Sign In</a>
     </div>
   </div>
 
