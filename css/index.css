@@ -114,6 +114,10 @@ header {
 footer {
     background: #1A1E25;
     color: #868c96;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
 }
 
 footer p {

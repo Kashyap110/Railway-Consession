@@ -24,6 +24,7 @@
   .heading__title {
     font-weight: 600;
     color: white;
+    text-transform: uppercase;
   }
   
   .heading__credits {
@@ -46,7 +47,7 @@
   .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
   }
   
   .card {
