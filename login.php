@@ -1,138 +1,76 @@
 <?php
-//This script will handle login
 session_start();
-
-// check if the user is already logged in
-if(isset($_SESSION['username']))
+if (isset($_POST['submit']))
 {
-    header("location: welcome.php");
-    exit;
+	$conn = mysqli_connect("localhost","root","","studentconcession");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
 }
-require_once "config.php";
-
-$username = $password = "";
-$err = "";
-
-// if request method is post
-if ($_SERVER['REQUEST_METHOD'] == "POST"){
-    if(empty(trim($_POST['username'])) || empty(trim($_POST['password'])))
-    {
-        $err = "Please enter username + password";
-    }
-    else{
-        $username = trim($_POST['username']);
-        $password = trim($_POST['password']);
-    }
-
-
-if(empty($err))
-{
-    $sql = "SELECT id, username, password FROM users WHERE username = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $param_username);
-    $param_username = $username;
-    
-    
-    // Try to execute this statement
-    if(mysqli_stmt_execute($stmt)){
-        mysqli_stmt_store_result($stmt);
-        if(mysqli_stmt_num_rows($stmt) == 1)
-                {
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt))
-                    {
-                        if(password_verify($password, $hashed_password))
-                        {
-                            // this means the password is corrct. Allow user to login
-                            session_start();
-                            $_SESSION["username"] = $username;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["loggedin"] = true;
-
-                            //Redirect user to welcome page
-                            header("location: welcome.php");
-                            
-                        }
-                    }
-
-                }
-
-    }
-}    
-
-
+$regid=$_POST['regid'];
+$pw=$_POST['pw'];
+$sql = "SELECT * FROM students WHERE p_regid = '$regid' AND password = '$pw';";
+$sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL query" '.$sql);
+		$user = mysqli_fetch_assoc($sql_result);
+		if(!empty($user)){
+			$_SESSION['user_info'] = $user['email'];
+			$message='Logged in successfully';
+		}
+		else{
+			$message = 'Wrong email or password.';
+		}
+	echo "<script type='text/javascript'>alert('$message');</script>";
 }
-
-
 ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
+<html>
+<head>
+<title> Login Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/signin.css">
+<link rel="stylesheet" href="css/index.css">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>PHP login system!</title>
-  </head>
-  <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Php Login System</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-  <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="register.php">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>
-
-      
-     
-    </ul>
-  </div>
-</nav>
-
-<div class="container mt-4">
-<h3>Please Login Here:</h3>
-<hr>
-
-<form action="" method="post">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-
-
+</head>
+<script type="text/javascript">
+	function validate()	{
+		var pw=document.getElementById("pw");
+		
+   		if(pw.value.length< 8)
+		{
+			alert("Password consists of atleast 8 characters");
+			pw.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+<body>
+<header>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="images/VJTI Logo (Enhanced).png" height="100px" alt="" >  
+        </div>
+<ul class="nav-area">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="#">Sign In</a></li>
+<li><a href="https://vjti.ac.in/"; target="_blank">VJTI Site</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
 </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+</header>
+ <div class="loginBox">
+  <h2>Log In </h2>
+  <form id="login" action="login.php" onsubmit="return validate()" method="post" name="login">
+    <input type="text" name="regid" placeholder="Enter Registration ID" required>
+    <input type="password" name="password" placeholder="Enter Password">
+    <input type="submit" style="color:black;" name="sign-in" value="Sign In">
+    <a href="register.php">Don't have an account? Sign Up</a>
+  </form>
+</div>
+<footer style="background-color: black; height: 50px; padding-top: 20px;">
+    <p style="color: aliceblue; text-align: center;">Copyright &copy; 2022 VJTI Student Railway Concession, All Rights Reserved.</p>
+</footer>
+</body>
+</html> 
