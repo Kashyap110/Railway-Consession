@@ -42,7 +42,7 @@ else
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
-      <form name="register" method="post" action="register.php" onsubmit="return validate()">
+      <form name="register" method="post" action="index.html" onsubmit="return validate()">
         <div class="user-details">
           <div class="input-box">
             <span class="details">First Name</span>

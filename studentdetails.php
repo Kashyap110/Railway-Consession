@@ -18,7 +18,7 @@ $year=$_POST['year'];
 $program=$_POST['program'];
 $branch=$_POST['branch'];
 
-$sql = "INSERT INTO details (p_mob, p_dob, p_address, city,p_state,p_sem,p_year,p_program,p_branch) VALUES ($mob, $dob, '$address', '$city', '$state',$sem,'$year','$program','$branch');";
+$sql = "INSERT INTO details (p_mob, p_dob, p_address, city,p_state,p_sem,p_year,p_program,p_branch) VALUES ('$mob', '$dob', '$address', '$city', '$state','$sem','$year','$program','$branch');";
 echo "<script type='text/javascript'>alert('$sql');</script>";
 if (mysqli_errno($conn) == 1062) {
     $message = "Entered Registration Id already has an account!";
