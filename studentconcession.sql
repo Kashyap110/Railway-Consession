@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 03:28 AM
+-- Generation Time: Dec 15, 2022 at 05:50 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -49,6 +49,23 @@ INSERT INTO `details` (`p_mob`, `p_dob`, `p_address`, `city`, `p_state`, `p_sem`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `passdetails`
+--
+
+CREATE TABLE `passdetails` (
+  `p_tk` int(11) NOT NULL,
+  `p_class` varchar(30) NOT NULL,
+  `prev_endstation` varchar(50) NOT NULL,
+  `p_startdate` date NOT NULL,
+  `end_date` date NOT NULL,
+  `curr_endstation` int(11) NOT NULL,
+  `p_period` varchar(30) NOT NULL,
+  `curr_class` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -71,6 +88,12 @@ INSERT INTO `students` (`p_fname`, `p_lname`, `p_regid`, `email`, `password`, `p
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `passdetails`
+--
+ALTER TABLE `passdetails`
+  ADD PRIMARY KEY (`p_tk`);
 
 --
 -- Indexes for table `students`

@@ -7,7 +7,7 @@ if(!$conn){
 }
 if (isset($_POST['submit']))
 {
-echo "<script type='text/javascript'>alert('Test message');</script>";
+
 $mob=$_POST['mob'];
 $dob=$_POST['dob'];
 $address=$_POST['address'];
@@ -19,11 +19,8 @@ $program=$_POST['program'];
 $branch=$_POST['branch'];
 
 $sql = "INSERT INTO details (p_mob, p_dob, p_address, city,p_state,p_sem,p_year,p_program,p_branch) VALUES ('$mob', '$dob', '$address', '$city', '$state','$sem','$year','$program','$branch');";
-echo "<script type='text/javascript'>alert('$sql');</script>";
-if (mysqli_errno($conn) == 1062) {
-    $message = "Entered Registration Id already has an account!";
-}
-	else if(mysqli_query($conn, $sql))
+
+	if(mysqli_query($conn, $sql))
 {  
 	$message = "Student details have been saved successfully";
 }
@@ -134,7 +131,7 @@ else
             </div><br>
             
             <div class="row">
-                <input type="submit" value="Registered" name="submit">
+                <input type="submit" value="Register" name="submit">
             </div>  
         </form>
     </body>
