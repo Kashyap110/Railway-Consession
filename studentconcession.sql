@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2022 at 10:07 PM
+-- Generation Time: Dec 15, 2022 at 03:28 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `studentconcession`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `details`
+--
+
+CREATE TABLE `details` (
+  `p_mob` int(11) NOT NULL,
+  `p_dob` date NOT NULL,
+  `p_address` varchar(100) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `p_state` varchar(30) NOT NULL,
+  `p_sem` int(11) NOT NULL,
+  `p_year` varchar(30) NOT NULL,
+  `p_program` varchar(50) NOT NULL,
+  `p_branch` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `details`
+--
+
+INSERT INTO `details` (`p_mob`, `p_dob`, `p_address`, `city`, `p_state`, `p_sem`, `p_year`, `p_program`, `p_branch`) VALUES
+(543, '0000-00-00', '$address', '$city', '$state', 5, '$year', '$program', '$branch');
 
 -- --------------------------------------------------------
 
