@@ -1,28 +1,29 @@
 <?php
-session_start();
+
 $conn = mysqli_connect("localhost","root","","studentconcession");
 if(!$conn){  
 	echo "<script type='text/javascript'>alert('Database failed');</script>";
   	die('Could not connect: '.mysqli_connect_error());  
 }
-if (isset($_POST['submit']))
+session_start();
+$regid = $_SESSION['regid'];
+if (isset($_POST['register']))
 {
-
 $mob=$_POST['mob'];
 $dob=$_POST['dob'];
 $address=$_POST['address'];
 $city=$_POST['city'];
 $state=$_POST['state'];
-$sem=$_POST['sem'];
+$semester=$_POST['sem'];
 $year=$_POST['year'];
 $program=$_POST['program'];
 $branch=$_POST['branch'];
 
-$sql = "INSERT INTO details (p_mob, p_dob, p_address, city,p_state,p_sem,p_year,p_program,p_branch) VALUES ('$mob', '$dob', '$address', '$city', '$state','$sem','$year','$program','$branch');";
-
+$sql = "INSERT INTO `details`(`p_mob`, `p_dob`, `p_address`, `p_city`, `p_state`, `p_sem`, `p_year`, `p_program`, `p_branch`,`p_regid`) VALUES ('$mob','$dob','$address','$city','$state','$semester','$year','$program','$branch',$regid)";
 	if(mysqli_query($conn, $sql))
 {  
-	$message = "Student details have been saved successfully";
+	$message = "You have been successfully registered";
+    header("Location:dashboard.html");
 }
 else
 {  
@@ -30,6 +31,8 @@ else
 }
 	echo "<script type='text/javascript'>alert('$message');</script>";
 }
+    //echo "<script> location.href='dashboard.html'; </script>";
+    //exit;
 ?>
 <!DOCTYPE html>
 <html lang="en-us">
@@ -42,7 +45,7 @@ else
        
     <body>
         <h1>Student Details</h1>
-        <form action="dashboard.html" method="post">
+        <form action="" method="post">
             <div class="row">
                 <div class="col-10">
                     <label for="mob">Mobile Number</label>
@@ -96,7 +99,13 @@ else
                     <label for="year">Year</label>
                 </div>
                 <div class="col-90">
-                    <input type="text" id="year" name="year" placeholder="Year of degree">
+                    <select id="year" name="year" placeholder="Year of degree">
+                                <option disabled selected>Select year</option>
+                                <option>First Year</option>
+                                <option>Second Year</option>
+                                <option>Third Year</option>
+                                <option>Fourth Year</option>
+                    </select>
                 </div>
             </div>
             
@@ -131,7 +140,7 @@ else
             </div><br>
             
             <div class="row">
-                <input type="submit" value="Register" name="submit">
+                <input type="submit" value="Register" id="register" name="register">
             </div>  
         </form>
     </body>

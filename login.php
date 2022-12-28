@@ -1,26 +1,36 @@
 <?php
-session_start();
-if (isset($_POST['submit']))
-{
+$login = false;
+//$message = false;
+$message = "";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$conn = mysqli_connect("localhost","root","","studentconcession");
-if(!$conn){  
-	echo "<script type='text/javascript'>alert('Database failed');</script>";
-  	die('Could not connect: '.mysqli_connect_error());  
+	if(!$conn){  
+		echo "<script type='text/javascript'>alert('Database failed');</script>";
+		die('Could not connect: '.mysqli_connect_error());  
+	}
+	$regid=$_POST['regid'];
+	$password=$_POST['password'];
+
+	$sql="SELECT * FROM students WHERE p_regid='$regid' AND p_password='$password'"; 
+	$result = mysqli_query ($conn, $sql);
+	$num = mysqli_num_rows($result);
+	if ($num == 1){
+		$login = true;
+		session_start();
+		$_SESSION['loggedin'] = true;
+		$_SESSION['regid'] = $regid;
+		$message = "Logged in successfully";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+		header("location: dashboard.html");
+
+	}
+	else{
+		$message = "Invalid username or password";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+		
+	}
 }
-$regid=$_POST['regid'];
-$pw=$_POST['pw'];
-$sql = "SELECT * FROM students WHERE p_regid = '$regid' AND password = '$pw';";
-$sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL query" '.$sql);
-		$user = mysqli_fetch_assoc($sql_result);
-		if(!empty($user)){
-			$_SESSION['user_info'] = $user['email'];
-			$message='Logged in successfully';
-		}
-		else{
-			$message = 'Wrong email or password.';
-		}
-	echo "<script type='text/javascript'>alert('$message');</script>";
-}
+	//echo "<script type='text/javascript'>alert('$message');</script>";
 ?>
 
 <!DOCTYPE html>
@@ -62,10 +72,10 @@ $sql_result = mysqli_query ($conn, $sql) or die ('request "Could not execute SQL
 </header>
  <div class="loginBox">
   <h2>Log In </h2>
-  <form id="login" action="dashboard.html" onsubmit="return validate()" method="post" name="login">
-    <input type="text" name="regid" placeholder="Enter Registration ID" required>
-    <input type="password" name="password" placeholder="Enter Password">
-    <input type="submit" style="color:black;" name="sign-in" value="Sign In" >
+  <form id="login" action="" onsubmit="return validate()" method="post" name="login">
+    <input type="text" name="regid" id="regid" placeholder="Enter Registration ID" required>
+    <input type="password" name="password" id="password" placeholder="Enter Password">
+    <input type="submit" style="color:black;" name="sign_in" id="sign_in" value="Sign In" >
     <a href="register.php">Don't have an account? Sign Up</a>
   </form>
 </div>

@@ -1,24 +1,64 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost","root","","studentconcession");
+$server = "localhost";
+$username = "root";
+$password = "";
+$database = "studentconcession";
+try {
+  $conn = mysqli_connect($server,$username,$password,$database);
+  //echo '<script>alert("Connection successful")</script>';
+}
+catch(Exception $e) {
+  echo 'Message: ' .$e->getMessage();
+}
+
 if(!$conn){  
 	echo "<script type='text/javascript'>alert('Database failed');</script>";
   	die('Could not connect: '.mysqli_connect_error());  
 }
+/*if($_SERVER["REQUEST_METHOD"]=="POST"){
+  $fname=$_POST['fname'];
+  $lname=$_POST['lname'];
+  $regid=$_POST['regid'];
+  $email=$_POST['email'];
+  $pw=$_POST['pw'];
+  $cpw=$_POST['cpw'];
+  $gender=$_POST['gender'];
+  $exists = false;
+
+  if($pw == $cpw && $exists == false){
+    $sql = "INSERT INTO `students`(`p_fname`, `p_lname`, `p_regid`, `p_email`, `p_password`, `p_gender`) VALUES ('$fname','$lname','$regid','$email','$pw','$gender')";
+    $result = mysqli_query($conn, $sql);
+    if($result){  
+      $message = "You have been successfully registered";
+    }
+    else
+    {  
+      $message = "Could not insert record"; 
+    }
+    echo "<script type='text/javascript'>alert('$message');</script>";
+  }
+  else{
+    $showError = "Passwords do not match";
+  }
+}*/
+//echo '<script>alert("Before main if")</script>';
 if (isset($_POST['submit']))
 {
+  //echo '<script>alert("Inside main if")</script>';
 $fname=$_POST['fname'];
+//echo '<script>alert("First Name: " $fname)</script>';
 $lname=$_POST['lname'];
 $regid=$_POST['regid'];
 $email=$_POST['email'];
 $pw=$_POST['pw'];
+$cpw=$_POST['cpw'];
 $gender=$_POST['gender'];
 
-$sql = "INSERT INTO students (p_fname, p_lname, p_regid, email,password,p_gender) VALUES ('$fname', '$lname', '$regid', '$email', '$pw','$gender');";
-if (mysqli_errno($conn) == 1062) {
-    $message = "Entered Registration Id already has an account!";
-}
-	else if(mysqli_query($conn, $sql))
+if($pw == $cpw ){
+  //echo '<script>alert("Inserting")</script>';
+  $sql = "INSERT INTO students (p_fname, p_lname, p_regid, p_email, p_password, p_gender) VALUES ('$fname', '$lname', '$regid', '$email', '$pw', '$gender');";
+	if(mysqli_query($conn, $sql))
 {  
 	$message = "You have been successfully registered";
 }
@@ -27,6 +67,10 @@ else
 	$message = "Could not insert record"; 
 }
 	echo "<script type='text/javascript'>alert('$message');</script>";
+}
+  echo "<script> location.href='login.php'; </script>";
+  exit;
+
 }
 ?>
 
@@ -42,33 +86,33 @@ else
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
-      <form name="register" method="post" action="index.html" onsubmit="return validate()">
+      <form name="register" method="post" action="" onsubmit="return validate()">
         <div class="user-details">
           <div class="input-box">
             <span class="details">First Name</span>
-            <input type="text" name="fname"  placeholder="Enter your first name" required>
+            <input type="text" name="fname" id="fname" placeholder="Enter your first name" required>
           </div>
           <div class="input-box">
             <span class="details">Last Name</span>
-            <input type="text" placeholder="Enter your last name" name="lname" required>
+            <input type="text" placeholder="Enter your last name" id="lname" name="lname" required>
           </div>
           <div class="input-box">
             <span class="details">Registration ID</span>
-            <input type="text" name="regid" placeholder="Enter your Registration Id" required>
+            <input type="text" name="regid" id="regid" placeholder="Enter your Registration Id" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" name="email" placeholder="Enter your email" required>
+            <input type="text" name="email" id="email" placeholder="Enter your email" required>
           </div>
           
         
           <div class="input-box">
             <span class="details">New Password</span>
-            <input type="password" name="pw" placeholder="Enter your password" required>
+            <input type="password" name="pw" id="pw" placeholder="Enter your password" required>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
-            <input type="password" placeholder="Confirm your password" required>
+            <input type="password" name="cpw" id="cpw" placeholder="Confirm your password" required>
           </div>
         
         <div class="gender-details">
@@ -93,7 +137,7 @@ else
           </div>
           </div>
         <div class="button">
-          <input type="submit" name="submit" value="Register" style="color: black;">
+          <input type="Submit" id="submit" name="submit" value="Submit" style="color: black;">
         </div>
       </form> 
       <a href="login.php">Already have an account? Sign In</a>

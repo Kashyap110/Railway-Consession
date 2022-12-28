@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2022 at 05:50 AM
+-- Generation Time: Dec 28, 2022 at 11:20 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,23 +28,25 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `details` (
-  `p_mob` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL,
+  `p_mob` varchar(12) NOT NULL,
   `p_dob` date NOT NULL,
-  `p_address` varchar(100) NOT NULL,
-  `city` varchar(30) NOT NULL,
+  `p_address` varchar(70) NOT NULL,
+  `p_city` varchar(30) NOT NULL,
   `p_state` varchar(30) NOT NULL,
   `p_sem` int(11) NOT NULL,
   `p_year` varchar(30) NOT NULL,
-  `p_program` varchar(50) NOT NULL,
-  `p_branch` varchar(50) NOT NULL
+  `p_program` varchar(30) NOT NULL,
+  `p_branch` varchar(30) NOT NULL,
+  `p_regid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `details`
 --
 
-INSERT INTO `details` (`p_mob`, `p_dob`, `p_address`, `city`, `p_state`, `p_sem`, `p_year`, `p_program`, `p_branch`) VALUES
-(543, '0000-00-00', '$address', '$city', '$state', 5, '$year', '$program', '$branch');
+INSERT INTO `details` (`p_id`, `p_mob`, `p_dob`, `p_address`, `p_city`, `p_state`, `p_sem`, `p_year`, `p_program`, `p_branch`, `p_regid`) VALUES
+(6, '9769514275', '2002-12-06', 'Jasmine,Sundarvan Park, Samta Nagar, Shirwadkar road', 'Thane', 'Maharashtra', 5, 'Third Year', 'B.Tech', 'Information Technology', 201081007);
 
 -- --------------------------------------------------------
 
@@ -53,15 +55,25 @@ INSERT INTO `details` (`p_mob`, `p_dob`, `p_address`, `city`, `p_state`, `p_sem`
 --
 
 CREATE TABLE `passdetails` (
-  `p_tk` int(11) NOT NULL,
-  `p_class` varchar(30) NOT NULL,
-  `prev_endstation` varchar(50) NOT NULL,
+  `p_tk` varchar(30) NOT NULL,
+  `p_class` text NOT NULL,
+  `prev_startstation` varchar(50) NOT NULL,
+  `prev_endstation` varchar(30) NOT NULL,
   `p_startdate` date NOT NULL,
   `end_date` date NOT NULL,
-  `curr_endstation` int(11) NOT NULL,
-  `p_period` varchar(30) NOT NULL,
-  `curr_class` varchar(30) NOT NULL
+  `curr_startstation` varchar(50) NOT NULL,
+  `curr_endstation` varchar(30) NOT NULL,
+  `p_period` varchar(10) NOT NULL,
+  `curr_class` varchar(10) NOT NULL,
+  `p_regid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `passdetails`
+--
+
+INSERT INTO `passdetails` (`p_tk`, `p_class`, `prev_startstation`, `prev_endstation`, `p_startdate`, `end_date`, `curr_startstation`, `curr_endstation`, `p_period`, `curr_class`, `p_regid`) VALUES
+('674548', 'First', 'Thane', 'Dadar', '2022-11-24', '2023-02-02', 'Thane', 'Dadar', 'Quarterly', 'First', 201081007);
 
 -- --------------------------------------------------------
 
@@ -70,36 +82,71 @@ CREATE TABLE `passdetails` (
 --
 
 CREATE TABLE `students` (
-  `p_fname` varchar(50) DEFAULT NULL,
-  `p_lname` varchar(50) DEFAULT NULL,
+  `p_fname` varchar(30) NOT NULL,
+  `p_lname` varchar(30) NOT NULL,
   `p_regid` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `p_gender` varchar(30) DEFAULT NULL
+  `p_email` varchar(30) NOT NULL,
+  `p_password` varchar(10) NOT NULL,
+  `p_gender` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`p_fname`, `p_lname`, `p_regid`, `email`, `password`, `p_gender`) VALUES
-('Saniya', 'Gupte', 201081007, 'abc@gmail.com', 'rose4567', 'female');
+INSERT INTO `students` (`p_fname`, `p_lname`, `p_regid`, `p_email`, `p_password`, `p_gender`) VALUES
+('Saniya', 'Gupte', 201081007, 'sugupte_b20@it.vjti.ac.in', '12345678', 'female');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `details`
+--
+ALTER TABLE `details`
+  ADD PRIMARY KEY (`p_id`),
+  ADD KEY `p_regid_fk` (`p_regid`);
+
+--
 -- Indexes for table `passdetails`
 --
 ALTER TABLE `passdetails`
-  ADD PRIMARY KEY (`p_tk`);
+  ADD PRIMARY KEY (`p_tk`),
+  ADD KEY `p_regid_fk` (`p_regid`);
 
 --
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`p_regid`);
+  ADD PRIMARY KEY (`p_regid`),
+  ADD UNIQUE KEY `p_email` (`p_email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `details`
+--
+ALTER TABLE `details`
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `details`
+--
+ALTER TABLE `details`
+  ADD CONSTRAINT `details_ibfk_1` FOREIGN KEY (`p_regid`) REFERENCES `students` (`p_regid`);
+
+--
+-- Constraints for table `passdetails`
+--
+ALTER TABLE `passdetails`
+  ADD CONSTRAINT `passdetails_ibfk_1` FOREIGN KEY (`p_regid`) REFERENCES `students` (`p_regid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

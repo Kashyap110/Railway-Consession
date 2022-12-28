@@ -82,7 +82,9 @@ background-color: #00fecb;
     color: white;
     margin-top: 6px;
 }
-
+.specialization #btech #mtech #mca #phd{
+    background-color: #1A1E25;
+}
 .row:after{
     content: "";
     display: table;
