@@ -1,3 +1,27 @@
+<?php 
+session_start();
+$conn = mysqli_connect("localhost","root","","studentconcession");
+if(!$conn){  
+	echo "<script type='text/javascript'>alert('Database failed');</script>";
+  	die('Could not connect: '.mysqli_connect_error());  
+}
+
+if (isset($_POST['send']))
+{
+  //echo '<script>alert("Inside main if")</script>';
+$name=$_POST['name'];
+//echo '<script>alert("First Name: " $fname)</script>';
+$email=$_POST['email'];
+$message=$_POST['message'];
+$sql = "INSERT INTO `contactus`(`name`, `email`, `message`) VALUES ('$name','$email','$message')";
+if(mysqli_query($conn, $sql))
+{  
+	$message = "Message has been sent successfully!";
+}
+echo "<script type='text/javascript'>alert('$message');</script>";
+header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,16 +52,16 @@
               <h1 class="section-title">Contact Us</h1>
             </div>
             <div class="grid-8 form">
-              <form action="index.html" method="post" id="contact_form" name="contactForm">
+              <form action="" method="post" id="contact_form" name="contactForm">
                 <div class="form-inline clearfix">
                   <div class="form-group grid-12 ">
-                    <input type="text" placeholder="name" id="exampleInputName" name="name" class="form-control">
+                    <input type="text" placeholder="name" id="name" name="name" class="form-control">
                   </div>
                   <div class="form-group grid-12">
-                    <input type="email" placeholder="email address" id="exampleInputEmail" name="email" class="form-control">
+                    <input type="email" placeholder="email address" id="email" name="email" class="form-control">
                   </div>
                   <div class="form-group grid-12">
-                    <textarea placeholder="message" id="exampleInputMessage" rows="8" name="message" class="form-control"></textarea>
+                    <textarea placeholder="message" id="message" rows="8" name="message" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
@@ -47,7 +71,7 @@
                   </div><!-- error message -->
                 </div>
                 <div id="submit" class="form-group grid-12">
-                  <input type="submit" value="send" class="btn  btn-lg costom-btn" id="send_message" onclick="alert('Feedback sent successfully!');">
+                  <input type="submit" value="send" class="btn  btn-lg costom-btn" name = "send" id="send">
                 </div>
               </form>
             </div> <!-- /.col-xs-12 .col-sm-offset-2 .col-sm-8 -->

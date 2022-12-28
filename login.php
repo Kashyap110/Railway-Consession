@@ -66,7 +66,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <li><a href="about.html">About</a></li>
 <li><a href="login.php">Sign In</a></li>
 <li><a href="https://vjti.ac.in/"; target="_blank">VJTI Site</a></li>
-<li><a href="contact.html">Contact</a></li>
+<li><a href="contact.php">Contact</a></li>
 </ul>
 </div>
 </header>
