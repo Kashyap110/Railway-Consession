@@ -58,7 +58,7 @@ if (mysqli_num_rows($result) > 0) {
                             echo '<td><a href="http://localhost/php_workspace/Railway_concession_portal/' . $row['ticketfile'] . '">Previous Pass</a></td>';
                             echo '<td>
                                     <a href="renewalrequest.php?approve=' . $row['ticketno'] . '" data-color="#265ed7">Approve</a>
-                                    <a href="renewalrequest.php?delete=' . $row['ticketno'] . '" data-color="#e95959">Disapprove</a>
+                                    <a href="renewalrequest.php?reject=' . $row['ticketno'] . '" data-color="#e95959">Disapprove</a>
                                 </td>';
                          
                             echo '</tr>'; 

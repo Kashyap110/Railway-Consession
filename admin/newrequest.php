@@ -57,7 +57,6 @@ if (mysqli_num_rows($result) > 0) {
                             
                             <th>Surname</th>             
                             <th>Firstname</th>
-                            <th>Date of birth</th>
                             <th>Degree</th>
                             <th>Year</th>
                             <th>Duration</th>
@@ -77,8 +76,7 @@ if (mysqli_num_rows($result) > 0) {
                         if($row['stat']=='Pending'){
                             echo '<tr>';
                             echo '<td>' . $row['surname'] . '</td>';                    
-                            echo '<td>' . $row['fname'] . '</td>';                    
-                            echo '<td>' . $row['dob'] . '</td>';                    
+                            echo '<td>' . $row['fname'] . '</td>';                                        
                             echo '<td>' . $row['degree'] . '</td>';                    
                             echo '<td>' . $row['years'] . '</td>';                    
                             echo '<td>' . $row['duration'] . '</td>';                    

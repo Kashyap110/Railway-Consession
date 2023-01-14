@@ -35,7 +35,7 @@
 <body>
     <div class='container'>
         <div class='row'>
-            <div class='col-12'><h1>NEW REQUEST</h1></div>
+            <div class='col-12'><h1>ENTER DETAILS</h1></div>
             <div class="col_12">
                 <form method ="POST" class="row">
                   <div class="col-4">
@@ -49,6 +49,7 @@
                   </div>
                  </form>
             </div>
+
             <?php
             error_reporting(0);
             $conn = mysqli_connect("localhost","root","","studentconcession");
@@ -63,25 +64,28 @@
             }
             ?>
 
-            <div class="col-12"><h2>Pending</h2>
+            <!-- <div class="col-12"><h2>Pending</h2> -->
             <?php
+            
 if (mysqli_num_rows($result) > 0) {
+    echo'<div class="col-12"><h2>Pending</h2>';
 ?> 
                 <table class="table table-hover" >
                     <thead>
                         <tr>
-                            <th><font color ="white">Surname</font> </th>             
-                            <th>Firstname</th>
-                            <th>Date of birth</th>
-                            <th>Degree</th>
-                            <th>Year</th>
-                            <th>Duration</th>
-                            <th>Class</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Adhaar</th>
-                            <th>ID card</th>
-                            <th>Status</th>
+                            <th><font color ="white">Surname</font> </th>
+                            <th><font color ="white">Firstname</font> </th>             
+                            <th><font color ="white">Date of birth</font> </th>
+                            <th><font color ="white">Degree</font> </th>   
+                            <th><font color ="white">Year</font> </th>  
+                            <th><font color ="white">Duration</font> </th>   
+                            <th><font color ="white">Class</font> </th> 
+                            <th><font color ="white">From</font> </th>   
+                            <th><font color ="white">To</font> </th>  
+                            <th><font color ="white">Adhaar</font> </th>  
+                            <th><font color ="white">ID card</font> </th>  
+                            <th><font color ="white">Status</font> </th>  
+                          
                                                       
                         </tr>
                     </thead>
@@ -91,15 +95,15 @@ if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_array($result)) {
                         if($row['stat']=='Pending'){
                             echo '<tr>';
-                            echo '<td>' . $row['surname'] . '</td>';                    
-                            echo '<td>' . $row['fname'] . '</td>';                    
-                            echo '<td>' . $row['dob'] . '</td>';                    
-                            echo '<td>' . $row['degree'] . '</td>';                    
-                            echo '<td>' . $row['years'] . '</td>';                    
-                            echo '<td>' . $row['duration'] . '</td>';                    
-                            echo '<td>' . $row['class'] . '</td>';                    
-                            echo '<td>' . $row['sfrom'] . '</td>';                    
-                            echo '<td>' . $row['sto'] . '</td>';                    
+                            echo '<td><font color = "white">' . $row['surname'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['fname'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['dob'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['degree'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['years'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['duration'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['class'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['sfrom'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['sto'] . '</font></td>';                    
                             echo '<td><a href="http://localhost/php_workspace/Railway_concession_portal/' . $row['adhar'] . '">Adhaar</a></td>';                    
                             echo '<td><a href="http://localhost/php_workspace/Railway_concession_portal/' . $row['id'] . '">ID</a></td>';   
                             echo '<td>' . $row['stat'] . '</td>';
@@ -127,18 +131,18 @@ if (mysqli_num_rows($result) > 0) {
                     <thead>
                         <tr>
                             
-                            <th>Surname</th>             
-                            <th>Firstname</th>
-                            <th>Date of birth</th>
-                            <th>Degree</th>
-                            <th>Year</th>
-                            <th>Duration</th>
-                            <th>Class</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Adhaar</th>
-                            <th>ID card</th>
-                            <th>Status</th>
+                        <th><font color ="white">Surname</font> </th>
+                            <th><font color ="white">Firstname</font> </th>             
+                            <th><font color ="white">Date of birth</font> </th>
+                            <th><font color ="white">Degree</font> </th>   
+                            <th><font color ="white">Year</font> </th>  
+                            <th><font color ="white">Duration</font> </th>   
+                            <th><font color ="white">Class</font> </th> 
+                            <th><font color ="white">From</font> </th>   
+                            <th><font color ="white">To</font> </th>  
+                            <th><font color ="white">Adhaar</font> </th>  
+                            <th><font color ="white">ID card</font> </th>  
+                            <th><font color ="white">Status</font> </th>  
                                                       
                         </tr>
                     </thead>
@@ -148,18 +152,18 @@ if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_array($result)) {
                         if($row['stat']=='Approved'){
                             echo '<tr>';
-                            echo '<td>' . $row['surname'] . '</td>';                    
-                            echo '<td>' . $row['fname'] . '</td>';                    
-                            echo '<td>' . $row['dob'] . '</td>';                    
-                            echo '<td>' . $row['degree'] . '</td>';                    
-                            echo '<td>' . $row['years'] . '</td>';                    
-                            echo '<td>' . $row['duration'] . '</td>';                    
-                            echo '<td>' . $row['class'] . '</td>';                    
-                            echo '<td>' . $row['sfrom'] . '</td>';                    
-                            echo '<td>' . $row['sto'] . '</td>';                    
+                            echo '<td><font color = "white">' . $row['surname'] . '</font></td>';                 
+                            echo '<td><font color = "white">' . $row['fname'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['dob'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['degree'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['years'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['duration'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['class'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['sfrom'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['sto'] . '</font></td>';                    
                             echo '<td><a href="http://localhost/php_workspace/Railway_concession_portal/' . $row['adhar'] . '">Adhaar</a></td>';                    
                             echo '<td><a href="http://localhost/php_workspace/Railway_concession_portal/' . $row['id'] . '">ID</a></td>';   
-                            echo '<td>' . $row['stat'] . '</td>';
+                            echo '<td><font color = "white">' . $row['stat'] . '</font></td>';
                             echo '</tr>'; 
 
                             $i++;
@@ -202,18 +206,18 @@ if (mysqli_num_rows($result) > 0) {
                     <thead>
                         <tr>
                             
-                            <th>Surname</th>             
-                            <th>Firstname</th>
-                            <th>Date of birth</th>
-                            <th>Degree</th>
-                            <th>Year</th>
-                            <th>Duration</th>
-                            <th>Class</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Adhaar</th>
-                            <th>ID card</th>
-                            <th>Status</th>
+                        <th><font color ="white">Surname</font> </th>
+                            <th><font color ="white">Firstname</font> </th>             
+                            <th><font color ="white">Date of birth</font> </th>
+                            <th><font color ="white">Degree</font> </th>   
+                            <th><font color ="white">Year</font> </th>  
+                            <th><font color ="white">Duration</font> </th>   
+                            <th><font color ="white">Class</font> </th> 
+                            <th><font color ="white">From</font> </th>   
+                            <th><font color ="white">To</font> </th>  
+                            <th><font color ="white">Adhaar</font> </th>  
+                            <th><font color ="white">ID card</font> </th>  
+                            <th><font color ="white">Status</font> </th>  
                                                       
                         </tr>
                     </thead>
@@ -223,18 +227,18 @@ if (mysqli_num_rows($result) > 0) {
                     while($row = mysqli_fetch_array($result)) {
                         if($row['stat']=='Rejected'){
                             echo '<tr>';
-                            echo '<td>' . $row['surname'] . '</td>';                    
-                            echo '<td>' . $row['fname'] . '</td>';                    
-                            echo '<td>' . $row['dob'] . '</td>';                    
-                            echo '<td>' . $row['degree'] . '</td>';                    
-                            echo '<td>' . $row['years'] . '</td>';                    
-                            echo '<td>' . $row['duration'] . '</td>';                    
-                            echo '<td>' . $row['class'] . '</td>';                    
-                            echo '<td>' . $row['sfrom'] . '</td>';                    
-                            echo '<td>' . $row['sto'] . '</td>';                    
+                            echo '<td><font color = "white">' . $row['surname'] . '</font></td>';                 
+                            echo '<td><font color = "white">' . $row['fname'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['dob'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['degree'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['years'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['duration'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['class'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['sfrom'] . '</font></td>';                    
+                            echo '<td><font color = "white">' . $row['sto'] . '</font></td>';                  
                             echo '<td><a href="http://localhost/php_workspace/Railway_concession_portal/' . $row['adhar'] . '">Adhaar</a></td>';                    
                             echo '<td><a href="http://localhost/php_workspace/Railway_concession_portal/' . $row['id'] . '">ID</a></td>';   
-                            echo '<td>' . $row['stat'] . '</td>';
+                            echo '<td><font color = "white">' . $row['stat'] . '</font></td>';
                             echo '</tr>'; 
 
                             $i++;
@@ -252,7 +256,7 @@ if (mysqli_num_rows($result) > 0) {
                 
                     ?>       
         </div>
-            <div class='col-12'><h1>RENEWAL REQUEST</h1></div>
+            <div class='col-12'><h1>FOR RENEWAL DETAILS</h1></div>
             <div class="col_12">
                 <form method='POST' class="row">
 

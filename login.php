@@ -30,6 +30,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			session_start();
 			$_SESSION['loggedin'] = true;
 			$_SESSION['regid'] = $regid;
+			$row=mysqli_fetch_array($result);
+			$_SESSION['fname']= $row['p_fname'];
+			$_SESSION['lname']= $row['p_lname'];
+
 			$message = "Logged in successfully";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 			header("location: dashboard.html");
