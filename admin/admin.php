@@ -24,10 +24,10 @@
                     <i class="uil uil-files-landscapes"></i>
                     <span class="link-name">Renewal Requests</span>
                 </a></li>
-                <li><a href="resubmission.php">
+                <!-- <li><a href="resubmission.php">
                     <i class="uil uil-chart"></i>
                     <span class="link-name">Resubmissions</span>
-                </a></li>
+                </a></li> -->
             </ul>
             
             <ul class="logout-mode">
@@ -53,12 +53,13 @@
             <div class="boxes">
                 <div class="box box1">
                     <span class="text"><ul><br>
-                        <li>Read all the guidelines before filling out the form.</li><br>
-                        <li>Filling of the Student details form is mandatory for the application of railway concession form.</li><br>
-                        <li>All the information should be filled to one's complete knowledge.</li><br>
-                        <li>Concession slip would be given only after the verification of application.</li><br>
-                        <li>Upload any required documents in clearly visible pdf format.</li><br>
-                        <li>Any kind of malpractices will not be tolerated.</li><br>
+                        <li>All concessional fares shall be calculated on the basis of fares for Mail/Express trains 
+                            <br>irrespective of the type of train, i.e. Mail or Express or Passenger, by which the passenger travels.</li><br>
+                        <li>Concession shall not be granted for any journey the cost of which is borne by the Central or 
+                            <br>State Government or a local authority or a Statutory body or a Corporation or a Government 
+                            <br>Undertaking or a University.</li><br>
+                        <li>Only one type of concession is admissible at a time at the choice of passenger and no person
+                             <br>is allowed two or more concessions simultaneously.</li><br>
                         
                         
                     </ul></span>

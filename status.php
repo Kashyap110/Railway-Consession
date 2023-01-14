@@ -27,6 +27,9 @@
          margin-bottom: 5px;
          color: white;
       }
+      table {
+        color:white;
+      }
     </style>
 </head>
 <body>
@@ -56,8 +59,8 @@
             if(isset($_POST['get'])){
             $fname =$_POST['fname'];
             $surname=$_POST['surname'];
-            $result = mysqli_query($conn, "SELECT * FROM requestnew where surname='$surname' AND fname='$fname' " );
-            
+            $result = mysqli_query($conn, "SELECT * FROM requestnew where surname='$surname' AND fname='$fname'" );
+            }
             ?>
 
             <div class="col-12"><h2>Pending</h2>
@@ -67,8 +70,7 @@ if (mysqli_num_rows($result) > 0) {
                 <table class="table table-hover" >
                     <thead>
                         <tr>
-                            
-                            <th>Surname</th>             
+                            <th><font color ="white">Surname</font> </th>             
                             <th>Firstname</th>
                             <th>Date of birth</th>
                             <th>Degree</th>
@@ -247,7 +249,7 @@ if (mysqli_num_rows($result) > 0) {
                     echo 'No New Request Remaining';
                     
                     }
-                }
+                
                     ?>       
         </div>
             <div class='col-12'><h1>RENEWAL REQUEST</h1></div>

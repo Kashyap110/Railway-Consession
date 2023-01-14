@@ -94,12 +94,12 @@ else
         <div class="row m-3"><h1>REQUEST NEW</h1></div>
         <form method="POST" class="row g-3" enctype="multipart/form-data"> 
           <div class="col-md-5">
-            <label for="inputEmail4" class="form-label">Surname(Capital letters)</label>
-            <input type="text" class="form-control" name="lastname" id="lastname">
+            <label for="inputEmail4" class="form-label">Surname</label>
+            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Capital letters">
           </div>
           <div class="col-md-5">
-            <label for="inputPassword4" class="form-label">Firstname(Capital letters)</label>
-            <input type="text" class="form-control" name="firstname" id="firstname">
+            <label for="inputPassword4" class="form-label">Firstname</label>
+            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Capital letters">
           </div>
           <div class="col-md-4">
             <label for="inputEmail4" class="form-label">Date Of Birth</label>
@@ -147,11 +147,11 @@ else
           </div>
           <div class="col-md-4">
             <label for="inputEmail4" class="form-label">From:</label>
-            <input type="text" class="form-control" name="sfrom" id="sfrom">
+            <input type="text" class="form-control" name="sfrom" id="sfrom" placeholder="Station">
           </div>
           <div class="col-md-4">
             <label for="inputEmail4" class="form-label">To:</label>
-            <input type="text" class="form-control" name="sto" id="sto">
+            <input type="text" class="form-control" name="sto" id="sto" placeholder="Station">
           </div>
           <div class="col-md-5">
             <label for="inputEmail4" class="form-label">Adhaar file</label>
