@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 $conn = mysqli_connect("localhost","root","","studentconcession");
 if(!$conn){  
 	echo "<script type='text/javascript'>alert('Database failed');</script>";

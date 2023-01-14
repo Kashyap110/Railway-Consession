@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 $login = false;
 //$message = false;
 $message = "";
@@ -11,24 +12,35 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	$regid=$_POST['regid'];
 	$password=$_POST['password'];
 
-	$sql="SELECT * FROM students WHERE p_regid='$regid' AND p_password='$password'"; 
-	$result = mysqli_query ($conn, $sql);
-	$num = mysqli_num_rows($result);
-	if ($num == 1){
+	if($regid=="admin" && $password=="admin@123"){
 		$login = true;
 		session_start();
 		$_SESSION['loggedin'] = true;
 		$_SESSION['regid'] = $regid;
-		$message = "Logged in successfully";
+		$message = "Logged in as admin successfully";
 		echo "<script type='text/javascript'>alert('$message');</script>";
-		header("location: dashboard.html");
-
+		header("location: admin/admin.php");
 	}
 	else{
-		$message = "Invalid username or password";
-		echo "<script type='text/javascript'>alert('$message');</script>";
-		
-	}
+		$sql="SELECT * FROM students WHERE p_regid='$regid' AND p_password='$password'"; 
+		$result = mysqli_query ($conn, $sql);
+		$num = mysqli_num_rows($result);
+		if ($num == 1){
+			$login = true;
+			session_start();
+			$_SESSION['loggedin'] = true;
+			$_SESSION['regid'] = $regid;
+			$message = "Logged in successfully";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+			header("location: dashboard.html");
+
+		}
+		else{
+			$message = "Invalid username or password";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+
+		}
+	}	
 }
 	//echo "<script type='text/javascript'>alert('$message');</script>";
 ?>
