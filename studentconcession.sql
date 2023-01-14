@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2022 at 11:20 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Jan 14, 2023 at 10:02 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `details` (
   `p_program` varchar(30) NOT NULL,
   `p_branch` varchar(30) NOT NULL,
   `p_regid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `details`
@@ -66,7 +66,7 @@ CREATE TABLE `passdetails` (
   `p_period` varchar(10) NOT NULL,
   `curr_class` varchar(10) NOT NULL,
   `p_regid` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `passdetails`
@@ -74,6 +74,65 @@ CREATE TABLE `passdetails` (
 
 INSERT INTO `passdetails` (`p_tk`, `p_class`, `prev_startstation`, `prev_endstation`, `p_startdate`, `end_date`, `curr_startstation`, `curr_endstation`, `p_period`, `curr_class`, `p_regid`) VALUES
 ('674548', 'First', 'Thane', 'Dadar', '2022-11-24', '2023-02-02', 'Thane', 'Dadar', 'Quarterly', 'First', 201081007);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requestnew`
+--
+
+CREATE TABLE `requestnew` (
+  `pid` int(11) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `dob` date NOT NULL,
+  `degree` varchar(50) NOT NULL,
+  `years` text NOT NULL,
+  `duration` varchar(50) NOT NULL,
+  `class` varchar(50) NOT NULL,
+  `sfrom` varchar(100) NOT NULL,
+  `sto` varchar(100) NOT NULL,
+  `adhar` varchar(200) NOT NULL,
+  `id` varchar(200) NOT NULL,
+  `stat` varchar(100) NOT NULL,
+  `expire` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `requestnew`
+--
+
+INSERT INTO `requestnew` (`pid`, `surname`, `fname`, `dob`, `degree`, `years`, `duration`, `class`, `sfrom`, `sto`, `adhar`, `id`, `stat`, `expire`) VALUES
+(1, 'Chavhan', 'Kashyap', '0000-00-00', 'Diploma', 'FY', 'Monthly', '1st Class', 'dadar', 'mil', 'uploads/jb.png', 'uploads/jb2.png', 'Approved', ''),
+(4, 'xyz', 'abc', '0000-00-00', 'M.Tech', 'TY', 'Quarterly', '2nd Class', 'Virar', 'Kalyan', 'uploads/adhar1.jpg', 'uploads/collegid1.jpg', 'Approved', ''),
+(5, 'Shetty', 'Kartik', '0000-00-00', 'Diploma', 'FINAL YR.', 'Monthly', '1st Class', 'andheri', 'wadala', 'uploads/adhar2.jpg', 'uploads/collegid1.jpg', 'Disapproved', ''),
+(6, 'b', 'a', '0000-00-00', 'M.Tech', 'SY', 'Monthly', '2nd Class', 'virar', 'dadar', 'uploads/adhar1.jpg', 'uploads/collegid1.jpg', 'Approved', '2023/02/14'),
+(7, 'c', 'd', '0000-00-00', 'M.Tech', 'SY', 'Monthly', '1st Class', 'dadar', 'kalyan', 'uploads/adhar1.jpg', 'uploads/collegid1.jpg', 'Pending', ''),
+(8, 'Chavhan', 'Kashyap', '0000-00-00', 'M.Tech', 'SY', 'Quarterly', '2nd Class', 'dadar', 'panvel', 'uploads/adhar1.jpg', 'uploads/collegid1.jpg', 'Approved', '2023/02/14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requestrenew`
+--
+
+CREATE TABLE `requestrenew` (
+  `ticketno` varchar(250) NOT NULL,
+  `ticketfile` varchar(200) NOT NULL,
+  `stat` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `requestrenew`
+--
+
+INSERT INTO `requestrenew` (`ticketno`, `ticketfile`, `stat`) VALUES
+('1', 'uploads/bhj.png', 'Disapproved'),
+('322', 'uploads/Local-Train-Ticket.jpg', 'Approved'),
+('5664656', 'uploads/bhj.png', 'Approved'),
+('5664657', 'uploads/bhj.png', ''),
+('5664658', 'uploads/bhj.png', ''),
+('5664659', 'uploads/bhj.png', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -88,13 +147,14 @@ CREATE TABLE `students` (
   `p_email` varchar(30) NOT NULL,
   `p_password` varchar(10) NOT NULL,
   `p_gender` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `students`
 --
 
 INSERT INTO `students` (`p_fname`, `p_lname`, `p_regid`, `p_email`, `p_password`, `p_gender`) VALUES
+('Kashyap', 'Chavhan', 201080013, 'kashyapchavhan1106@gmail.com', 'Kashyap@12', 'male'),
 ('Saniya', 'Gupte', 201081007, 'sugupte_b20@it.vjti.ac.in', '12345678', 'female');
 
 --
@@ -116,6 +176,18 @@ ALTER TABLE `passdetails`
   ADD KEY `p_regid_fk` (`p_regid`);
 
 --
+-- Indexes for table `requestnew`
+--
+ALTER TABLE `requestnew`
+  ADD PRIMARY KEY (`pid`);
+
+--
+-- Indexes for table `requestrenew`
+--
+ALTER TABLE `requestrenew`
+  ADD PRIMARY KEY (`ticketno`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -131,6 +203,12 @@ ALTER TABLE `students`
 --
 ALTER TABLE `details`
   MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `requestnew`
+--
+ALTER TABLE `requestnew`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
